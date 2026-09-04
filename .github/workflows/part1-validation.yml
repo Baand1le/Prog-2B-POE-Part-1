@@ -1,0 +1,69 @@
+name: Part 1 - Repository Structure Validation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+    name: Validate /docs folder and required files
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check /docs folder exists
+        run: |
+          if [ ! -d "docs" ]; then
+            echo "❌ /docs folder is missing"
+            exit 1
+          fi
+          echo "✅ /docs folder found"
+
+      - name: Check ERD file exists (PNG or PDF)
+        run: |
+          shopt -s nullglob nocaseglob
+          files=(docs/*erd*.png docs/*erd*.pdf)
+          if [ ${#files[@]} -gt 0 ]; then
+            echo "✅ ERD file found: ${files[0]}"
+          else
+            echo "❌ No ERD file found in /docs (expected a .png or .pdf with 'erd' in the filename)"
+            exit 1
+          fi
+
+      - name: Check API endpoint plan exists (PDF or Markdown)
+        run: |
+          shopt -s nullglob nocaseglob
+          files=(docs/*endpoint*.pdf docs/*endpoint*.md docs/*api*plan*.pdf docs/*api*plan*.md)
+          if [ ${#files[@]} -gt 0 ]; then
+            echo "✅ Endpoint plan found: ${files[0]}"
+          else
+            echo "❌ No endpoint plan found in /docs (expected a .pdf or .md with 'endpoint' or 'api plan' in the filename)"
+            exit 1
+          fi
+
+      - name: Check SQL script exists
+        run: |
+          shopt -s nullglob nocaseglob
+          files=(docs/*.sql)
+          if [ ${#files[@]} -gt 0 ]; then
+            echo "✅ SQL script found: ${files[0]}"
+          else
+            echo "❌ No .sql file found in /docs"
+            exit 1
+          fi
+
+      - name: Check README exists
+        run: |
+          if [ -f "README.md" ]; then
+            echo "✅ README.md found"
+          else
+            echo "❌ README.md is missing from the repository root"
+            exit 1
+          fi
+
+      - name: Summary
+        run: echo "🎉 All required Part 1 files are present in /docs"
