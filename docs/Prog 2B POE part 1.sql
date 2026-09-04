@@ -40,3 +40,17 @@ CREATE TABLE Category (
 );
 
 SELECT * FROM Category;
+
+CREATE TABLE Enrollment(
+    enrollmentID VARCHAR(20) PRIMARY KEY,
+    participantID VARCHAR(20) NOT NULL,
+    eventID VARCHAR(20) NOT NULL,
+    categoryID VARCHAR(20) NOT NULL,
+    enrollmentDate DATE,
+
+    FOREIGN KEY (participantID) REFERENCES Users(userID),
+    FOREIGN KEY (eventID) REFERENCES Event(eventID),
+    FOREIGN KEY (categoryID) REFERENCES Category(categoryID)
+);
+
+SELECT * FROM Enrollment;
