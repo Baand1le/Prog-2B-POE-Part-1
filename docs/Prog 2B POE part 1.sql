@@ -54,3 +54,14 @@ CREATE TABLE Enrollment(
 );
 
 SELECT * FROM Enrollment;
+
+CREATE TABLE Result (
+    resultID VARCHAR(20) PRIMARY KEY,
+    enrollmentID VARCHAR(20) NOT NULL,
+    finishTime TIME,
+    finishPosition INT,
+
+    FOREIGN KEY (enrollmentID) REFERENCES Enrollment(enrollmentID)
+);
+
+SELECT * FROM Result;
