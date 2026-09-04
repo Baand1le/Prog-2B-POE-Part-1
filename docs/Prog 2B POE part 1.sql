@@ -83,3 +83,19 @@ VALUES
 
 SELECT * FROM Users;
 
+INSERT INTO Event
+(eventID, organizerID, Name, Description, [Date], Location, Distance, eventType)
+VALUES
+	('E001', 'U001', 'Johannesburg City Run',
+	 'Annual city running event',
+	 '2026-10-10', 'Johannesburg', '10 km', 'Run'),
+
+	('E002', 'U002', 'Soweto Community Walk',
+	 'Community fitness and wellness walk',
+	 '2026-10-24', 'Soweto', '5 km', 'Walk'),
+
+	('E003', 'U001', 'Pretoria Cycle Challenge',
+	 'Cycling challenge for recreational cyclists',
+	 '2026-11-07', 'Pretoria', '20 km', 'Cycle');
+
+SELECT * FROM Event;
