@@ -114,3 +114,15 @@ VALUES
 
 SELECT * FROM Category;
 
+INSERT INTO Enrollment
+(enrollmentID, participantID, eventID, categoryID, enrollmentDate)
+VALUES
+	('EN001', 'U003', 'E001', 'C002', '2026-09-01'),
+	('EN002', 'U004', 'E001', 'C002', '2026-09-02'),
+
+	('EN003', 'U003', 'E002', 'C004', '2026-09-03'),
+	('EN004', 'U004', 'E002', 'C004', '2026-09-03'),
+
+	('EN005', 'U003', 'E003', 'C006', '2026-09-04');
+
+SELECT * FROM Enrollment;
