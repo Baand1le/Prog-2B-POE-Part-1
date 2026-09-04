@@ -99,3 +99,18 @@ VALUES
 	 '2026-11-07', 'Pretoria', '20 km', 'Cycle');
 
 SELECT * FROM Event;
+
+INSERT INTO Category
+(categoryID, eventID, categoryName, ageGroup)
+VALUES
+	('C001', 'E001', 'Junior Run', 'Under 18'),
+	('C002', 'E001', 'Senior Run', '18 and Over'),
+
+	('C003', 'E002', 'Junior Walk', 'Under 18'),
+	('C004', 'E002', 'Senior Walk', '18 and Over'),
+
+	('C005', 'E003', 'Junior Cycle', 'Under 18'),
+	('C006', 'E003', 'Senior Cycle', '18 and Over');
+
+SELECT * FROM Category;
+
