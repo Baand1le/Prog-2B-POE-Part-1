@@ -1,7 +1,10 @@
+--Create Database
 CREATE DATABASE RaceDay;
 
 USE RaceDay;
 
+--Create user role table
+--Stores the different roles available in the system
 CREATE TABLE userRole (
 	roleID INT PRIMARY KEY,
 	roleType VARCHAR(30)
@@ -9,6 +12,7 @@ CREATE TABLE userRole (
 
 SELECT * FROM userRole;
 
+--Create the users table to store the details of all users
 CREATE TABLE Users (
 	userID VARCHAR(20) PRIMARY KEY,
 	roleID INT NOT NULL REFERENCES userRole(roleID),
@@ -19,6 +23,8 @@ CREATE TABLE Users (
 
 SELECT * FROM Users;
 
+--Create the event table
+--Stores information about events, the organiserID identifies the user who organised the event
 CREATE TABLE Event (
 	eventID VARCHAR(20) PRIMARY KEY,
 	organizerID VARCHAR(20) NOT NULL REFERENCES Users(userID),
@@ -32,6 +38,7 @@ CREATE TABLE Event (
 
 SELECT * FROM Event;
 
+--this table stores the categories available for each event
 CREATE TABLE Category (
 	categoryID VARCHAR(20) PRIMARY KEY,
 	eventID VARCHAR(20) NOT NULL REFERENCES Event(eventID),
@@ -41,6 +48,7 @@ CREATE TABLE Category (
 
 SELECT * FROM Category;
 
+--This table records participants who enroll in events and links a participant to an event and a category
 CREATE TABLE Enrollment(
     enrollmentID VARCHAR(20) PRIMARY KEY,
     participantID VARCHAR(20) NOT NULL,
@@ -48,8 +56,13 @@ CREATE TABLE Enrollment(
     categoryID VARCHAR(20) NOT NULL,
     enrollmentDate DATE,
 
+	--Links the participant to a user
     FOREIGN KEY (participantID) REFERENCES Users(userID),
+
+	--Links the enrollment to an event
     FOREIGN KEY (eventID) REFERENCES Event(eventID),
+
+	--Links the enrollment to a category
     FOREIGN KEY (categoryID) REFERENCES Category(categoryID)
 );
 
