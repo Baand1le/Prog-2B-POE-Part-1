@@ -178,3 +178,6 @@ The planned system uses:
 ## Project Structure
 
 The Part 1 repository contains the database and planning documentation required for the POE.
+
+##CI/CD Workflow
+<img width="1366" height="768" alt="Screenshot 2026-09-04 222817" src="https://github.com/user-attachments/assets/26b5c837-3bce-4198-955d-9902b926cee6" />
