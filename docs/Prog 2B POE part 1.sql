@@ -65,3 +65,11 @@ CREATE TABLE Result (
 );
 
 SELECT * FROM Result;
+
+INSERT INTO userRole (roleID, roleType)
+VALUES
+	(1, 'Organiser'),
+	(2, 'Participant');
+
+SELECT * FROM userRole;
+
