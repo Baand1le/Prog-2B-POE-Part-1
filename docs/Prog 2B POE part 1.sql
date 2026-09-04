@@ -73,3 +73,13 @@ VALUES
 
 SELECT * FROM userRole;
 
+
+INSERT INTO Users (userID, roleID, firstName, surname, email)
+VALUES
+	('U001', 1, 'Sarah', 'Mokoena', 'sarah.mokoena@email.com'),
+	('U002', 1, 'David', 'Naidoo', 'david.naidoo@email.com'),
+	('U003', 2, 'Thabo', 'Dlamini', 'thabo.dlamini@email.com'),
+	('U004', 2, 'Lerato', 'Molefe', 'lerato.molefe@email.com');
+
+SELECT * FROM Users;
+
