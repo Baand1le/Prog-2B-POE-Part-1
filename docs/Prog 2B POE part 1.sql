@@ -31,3 +31,12 @@ CREATE TABLE Event (
 );
 
 SELECT * FROM Event;
+
+CREATE TABLE Category (
+	categoryID VARCHAR(20) PRIMARY KEY,
+	eventID VARCHAR(20) NOT NULL REFERENCES Event(eventID),
+	categoryName VARCHAR(50),
+	ageGroup VARCHAR(30)
+);
+
+SELECT * FROM Category;
